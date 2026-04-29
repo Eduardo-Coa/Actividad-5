@@ -1,6 +1,8 @@
 package Clases;
 
-public class Edificio {
+import Interfaces.HuellaCarbono;
+
+public class Edificio implements HuellaCarbono {
     private String nombre;
     private double consumoEnergia;
     private double metrosCuadrados;
@@ -51,4 +53,19 @@ public class Edificio {
         this.tipoCalefaccion = tipoCalefaccion;
     }
 
+    @Override
+    public double getHuellaCarbono() {
+        double factor = tipoCalefaccion.equalsIgnoreCase("gas") ? 0.204 : 0.233;
+        return consumoEnergia * factor;
+    }
+
+    public double getEficienciaEnergetica() {
+        return consumoEnergia / metrosCuadrados;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Edificio     | Nombre: %-20s | Calefaccion: %-10s | %.0f m2 | Consumo: %.0f kWh/anio",
+                nombre, tipoCalefaccion, metrosCuadrados, consumoEnergia);
+    }
 }

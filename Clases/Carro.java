@@ -1,6 +1,8 @@
 package Clases;
 
-public class Carro {
+import Interfaces.HuellaCarbono;
+
+public class Carro implements HuellaCarbono {
     private String modelo;
     private String tipoCombustible;
     private double consumoCombustible;
@@ -50,6 +52,20 @@ public class Carro {
         this.kilometrosAnio = kilometrosAnio;
     }
 
+    @Override
+    public double getHuellaCarbono() {
+        double litrosAnio = (consumoCombustible / 100.0) * kilometrosAnio;
+        double factor = tipoCombustible.equalsIgnoreCase("diesel") ? 2.68 : 2.31;
+        return litrosAnio * factor;
+    }
 
-    
+    public double getEficienciaCombustible() {
+        return 100.0 / consumoCombustible;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Carro        | Modelo: %-20s | Combustible: %-10s | %.1f L/100km | %.0f km/anio",
+                modelo, tipoCombustible, consumoCombustible, kilometrosAnio);
+    }
 }

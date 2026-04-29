@@ -1,6 +1,8 @@
 package Clases;
 
-public class Bicicleta {
+import Interfaces.HuellaCarbono;
+
+public class Bicicleta implements HuellaCarbono {
     private String tipo;
     private double peso;
     private double emisionesFabricacion;
@@ -49,5 +51,19 @@ public class Bicicleta {
     public void setAniosUso(int aniosUso) {
         this.aniosUso = aniosUso;
     }
-    
+
+    @Override
+    public double getHuellaCarbono() {
+        return emisionesFabricacion / aniosUso;
+    }
+
+    public double getKilometrosAnio() {
+        return 0.0;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Bicicleta    | Tipo: %-20s | Peso: %.1f kg | Fabricacion: %.1f kg CO2 | %d anios de uso",
+                tipo, peso, emisionesFabricacion, aniosUso);
+    }
 }
