@@ -1,6 +1,5 @@
 *.class
 .vscode
-*.png
 *.pdf
 .gitignore
 CLAUDE.md
