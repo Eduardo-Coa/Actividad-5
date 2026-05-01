@@ -37,7 +37,12 @@ public class EdificioTest {
     }
 
     static void check(String nombre, boolean condicion) {
-        if (condicion) { System.out.println("PASS: " + nombre); passed++; }
-        else           { System.out.println("FAIL: " + nombre); failed++; }
+        if (condicion) {
+            System.out.println("PASS: " + nombre);
+            passed++;
+        } else {
+            System.out.println("FAIL: " + nombre);
+            failed++;
+        }
     }
 }

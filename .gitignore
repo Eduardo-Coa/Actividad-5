@@ -1,1 +1,6 @@
 *.class
+.vscode
+*.png
+*.pdf
+.gitignore
+*.md
