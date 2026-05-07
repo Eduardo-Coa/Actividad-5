@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      font-size: 11pt;
+      margin: 0;
+      color: #000;
+    }
+
+    .page {
+      width: 21cm;
+      min-height: 29.7cm;
+      margin: 0 auto;
+      padding: 2.5cm;
+      box-sizing: border-box;
+    }
+
+    .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 29.7cm;
+      text-align: center;
+    }
+
+    .cover .title {
+      font-weight: bold;
+      font-size: 11pt;
+      margin-bottom: 8cm;
+    }
+
+    .cover .author {
+      font-weight: bold;
+      font-size: 11pt;
+      margin-bottom: 5cm;
+    }
+
+    .cover .subject {
+      font-size: 11pt;
+      margin-bottom: 7cm;
+    }
+
+    .cover .institution {
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    .cover .date {
+      font-style: italic;
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: bold;
+      border-bottom: none;
+      margin-bottom: 0.3cm;
+    }
+
+    h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-top: 1cm;
+      margin-bottom: 0.2cm;
+    }
+
+    h3 {
+      font-size: 11pt;
+      font-weight: bold;
+      margin-top: 0.5cm;
+      margin-bottom: 0.2cm;
+    }
+
+    .meta {
+      margin-bottom: 0.8cm;
+    }
+
+    .meta p {
+      margin: 2px 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0.4cm 0;
+      font-size: 10.5pt;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 6px 8px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 5px 8px;
+      vertical-align: top;
+    }
+
+    pre,
+    code {
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 9pt;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    ul {
+      margin: 0.2cm 0 0.2cm 0;
+      padding-left: 1.2cm;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .page-break {
+      page-break-after: always;
+    }
+
+    p {
+      margin: 0.2cm 0;
+    }
+
+    .uml-img {
+      text-align: center;
+      margin: 0.5cm 0;
+    }
+
+    .uml-img img {
+      max-width: 100%;
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        padding: 2cm;
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PORTADA -->
+  <div class="page page-break">
+    <div class="cover">
+      <div class="title">Actividad 5.</div>
+      <div class="author">Didier Eduardo Coa</div>
+      <div class="subject">Lenguaje Programacion II</div>
+      <div>
+        <div class="institution">Universidad de la salle</div>
+        <div class="date">6/5/2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANUAL -->
+  <div class="page">
+
+    <h1>Manual de Programación — Lenguaje II</h1>
+
+    <div class="meta">
+      <p><strong>Autor:</strong> Eduardo Coa</p>
+      <p><strong>Repositorio:</strong> Eduardo-Coa/Actividad-5</p>
+      <p><strong>Rama principal de trabajo:</strong> develop_dcoa37</p>
+    </div>
+
+    <h2>1. Descripción General</h2>
+
+    <p>El proyecto implementa un sistema de cálculo de <strong>huella de carbono</strong> orientado a objetos en
+      <strong>Java</strong>, basado en el ejercicio de Deitel, P. y Deitel, H. — <em>How to Program in Java</em> (9th
+      ed.):</p>
+
+    <table>
+      <tr>
+        <th>Sistema</th>
+        <th>Descripción</th>
+      </tr>
+      <tr>
+        <td><strong>HuellaCarbonoApp</strong></td>
+        <td>Cálculo polimórfico de huella de carbono (kg CO₂/año) para tres tipos de entidades: Edificio, Carro y
+          Bicicleta. Demuestra el uso de interfaces, polimorfismo y <code>ArrayList&lt;HuellaCarbono&gt;</code>.</td>
+      </tr>
+    </table>
+
+    <p>El sistema aplica el patrón de <strong>interfaz polimórfica</strong>: tres clases sin relación de herencia entre
+      sí implementan una interfaz común (<code>HuellaCarbono</code>) y se tratan uniformemente en la aplicación
+      principal.</p>
+
+    <h2>2. Principios SOLID Aplicados</h2>
+
+    <h3>S — Single Responsibility (Responsabilidad Única)</h3>
+    <p>Cada clase tiene una única razón para cambiar.</p>
+    <table>
+      <tr>
+        <th>Clase</th>
+        <th>Responsabilidad única</th>
+      </tr>
+      <tr>
+        <td>Edificio</td>
+        <td>Solo gestiona datos del edificio y calcula huella según consumo energético.</td>
+      </tr>
+      <tr>
+        <td>Carro</td>
+        <td>Solo gestiona datos del vehículo y calcula emisiones por tipo de combustible.</td>
+      </tr>
+      <tr>
+        <td>Bicicleta</td>
+        <td>Solo gestiona datos de la bicicleta y amortiza emisiones de fabricación.</td>
+      </tr>
+      <tr>
+        <td>HuellaCarbono</td>
+        <td>Solo declara el contrato del método <code>getHuellaCarbono()</code>.</td>
+      </tr>
+    </table>
+    <p><em>Nota: <code>HuellaCarbonoApp</code> combina creación de objetos y lógica de display, lo cual representa una
+        violación parcial de SRP.</em></p>
+
+    <h3>O — Open/Closed (Abierto/Cerrado)</h3>
+    <p>Las clases están abiertas para extensión pero cerradas para modificación.</p>
+    <ul>
+      <li><strong>HuellaCarbono</strong> es la interfaz de extensión: agregar un nuevo tipo (ej. <code>Avion</code>)
+        solo requiere crear una clase nueva que la implemente. Ningún archivo existente necesita modificarse.</li>
+      <li><strong>HuellaCarbonoApp</strong> no necesita cambios al agregar nuevos tipos, ya que opera sobre la interfaz.
+      </li>
+    </ul>
+
+    <h3>L — Liskov Substitution (Sustitución de Liskov)</h3>
+    <p>Las subclases pueden usarse donde se espera la clase base sin romper el comportamiento.</p>
+    <ul>
+      <li><code>Edificio</code>, <code>Carro</code> y <code>Bicicleta</code> son intercambiables como
+        <code>HuellaCarbono</code> en el <code>ArrayList</code>.</li>
+      <li>El for-each en <code>displayFootprints()</code> funciona correctamente con los tres tipos sin conocer su tipo
+        concreto.</li>
+    </ul>
+
+    <h3>I — Interface Segregation (Segregación de Interfaces)</h3>
+    <p>Las interfaces son pequeñas y específicas.</p>
+    <ul>
+      <li><code>HuellaCarbono</code> tiene un único método: <code>getHuellaCarbono()</code>. Ninguna clase está forzada
+        a implementar métodos que no necesita.</li>
+      <li>Los métodos adicionales (<code>getEficienciaEnergetica()</code>, <code>getEficienciaCombustible()</code>,
+        <code>getKilometrosAnio()</code>) viven en cada clase concreta, no en la interfaz.</li>
+    </ul>
+
+    <h3>D — Dependency Inversion (Inversión de Dependencias)</h3>
+    <p>Los módulos de alto nivel dependen de abstracciones, no de implementaciones concretas.</p>
+    <ul>
+      <li><code>displayFootprints()</code> opera sobre <code>HuellaCarbono</code> (abstracción), no sobre
+        <code>Edificio</code>, <code>Carro</code> ni <code>Bicicleta</code>.</li>
+      <li><em>Violación parcial:</em> <code>main()</code> instancia directamente <code>new Edificio()</code>,
+        <code>new Carro()</code>, <code>new Bicicleta()</code> en lugar de usar un factory o inyección de dependencias.
+      </li>
+    </ul>
+
+    <h2>3. Estructura del Proyecto</h2>
+
+    <pre>Actividad 5/
+├── Clases/
+│   ├── Edificio.java
+│   ├── Carro.java
+│   └── Bicicleta.java
+├── Interfaces/
+│   └── HuellaCarbono.java
+├── test/
+│   ├── EdificioTest.java
+│   ├── CarroTest.java
+│   └── BicicletaTest.java
+└── HuellaCarbonoApp.java</pre>
+
+    <h2>4. Estándares y Convenciones</h2>
+
+    <h3>Java</h3>
+    <ul>
+      <li><strong>Convenciones:</strong> <code>camelCase</code> para métodos y atributos; <code>PascalCase</code> para
+        clases.</li>
+      <li><strong>Encapsulamiento:</strong> atributos <code>private</code>; acceso mediante getters/setters públicos.
+      </li>
+      <li><strong>Interfaces:</strong> <code>interface</code> con métodos sin implementación.</li>
+      <li><strong>Implementación:</strong> <code>implements</code> + <code>@Override</code> en cada método de la
+        interfaz.</li>
+      <li><strong>Colecciones:</strong> <code>List&lt;T&gt;</code> con <code>ArrayList</code>.</li>
+      <li><strong>Sin herramienta de construcción:</strong> compilación directa con <code>javac</code>.</li>
+    </ul>
+
+    <h2>5. Sistema HuellaCarbonoApp</h2>
+
+    <h3>Diagrama UML</h3>
+    <div class="uml-img">
+      <img src="Huella%20de%20Carbono.jpeg" alt="Diagrama de Clases UML">
+    </div>
+
+    <h3>Descripción de Clases</h3>
+    <table>
+      <tr>
+        <th>Clase</th>
+        <th>Responsabilidad</th>
+      </tr>
+      <tr>
+        <td>HuellaCarbono</td>
+        <td>Interfaz con <code>getHuellaCarbono(): double</code>. Contrato que todas las clases deben cumplir.</td>
+      </tr>
+      <tr>
+        <td>Edificio</td>
+        <td>Representa un edificio. Atributos: nombre, consumoEnergia, metrosCuadrados, tipoCalefaccion. Calcula huella
+          según consumo energético y tipo de calefacción.</td>
+      </tr>
+      <tr>
+        <td>Carro</td>
+        <td>Representa un vehículo. Atributos: modelo, tipoCombustible, consumoCombustible, kilometrosAnio. Calcula
+          huella según litros consumidos al año.</td>
+      </tr>
+      <tr>
+        <td>Bicicleta</td>
+        <td>Representa una bicicleta. Atributos: tipo, peso, emisionesFabricacion, aniosUso. Calcula huella amortizando
+          emisiones de fabricación entre los años de uso.</td>
+      </tr>
+      <tr>
+        <td>HuellaCarbonoApp</td>
+        <td>Clase principal. Crea objetos, los almacena en <code>ArrayList&lt;HuellaCarbono&gt;</code> e itera
+          polimórficamente llamando <code>getHuellaCarbono()</code> en cada uno.</td>
+      </tr>
+    </table>
+
+    <h3>Interfaces</h3>
+    <table>
+      <tr>
+        <th>Interfaz</th>
+        <th>Métodos</th>
+      </tr>
+      <tr>
+        <td>HuellaCarbono</td>
+        <td><code>getHuellaCarbono(): double</code></td>
+      </tr>
+    </table>
+
+    <h3>Métodos adicionales por clase</h3>
+    <table>
+      <tr>
+        <th>Clase</th>
+        <th>Método</th>
+        <th>Descripción</th>
+      </tr>
+      <tr>
+        <td>Edificio</td>
+        <td><code>getEficienciaEnergetica()</code></td>
+        <td>Consumo por metro cuadrado (kWh/m²) = consumoEnergia / metrosCuadrados</td>
+      </tr>
+      <tr>
+        <td>Carro</td>
+        <td><code>getEficienciaCombustible()</code></td>
+        <td>Kilómetros por litro = 100 / consumoCombustible</td>
+      </tr>
+      <tr>
+        <td>Bicicleta</td>
+        <td><code>getKilometrosAnio()</code></td>
+        <td>Retorna 0.0 — sin desplazamiento con combustible</td>
+      </tr>
+    </table>
+
+    <h3>Fórmulas de Huella de Carbono</h3>
+    <table>
+      <tr>
+        <th>Clase</th>
+        <th>Fórmula</th>
+        <th>Factor</th>
+      </tr>
+      <tr>
+        <td>Edificio (eléctrica)</td>
+        <td>consumoEnergia × 0.233</td>
+        <td>0.233 kg CO₂/kWh (red eléctrica promedio)</td>
+      </tr>
+      <tr>
+        <td>Edificio (gas)</td>
+        <td>consumoEnergia × 0.204</td>
+        <td>0.204 kg CO₂/kWh (gas natural)</td>
+      </tr>
+      <tr>
+        <td>Carro (gasolina)</td>
+        <td>(L/100km ÷ 100 × km/año) × 2.31</td>
+        <td>2.31 kg CO₂/L</td>
+      </tr>
+      <tr>
+        <td>Carro (diesel)</td>
+        <td>(L/100km ÷ 100 × km/año) × 2.68</td>
+        <td>2.68 kg CO₂/L</td>
+      </tr>
+      <tr>
+        <td>Bicicleta</td>
+        <td>emisionesFabricacion ÷ aniosUso</td>
+        <td>Amortización anual de fabricación</td>
+      </tr>
+    </table>
+
+    <h3>Visualización de Pruebas</h3>
+
+    <h3>Ejecución de HuellaCarbonoApp</h3>
+    <pre>============================================================
+         REPORTE DE HUELLA DE CARBONO (kg CO2/anio)
+============================================================
+Edificio     | Nombre: Torre Empresarial    | Calefaccion: electrica  | 1200 m2 | Consumo: 85000 kWh/anio
+             Huella de carbono: 19805.00 kg CO2/anio
+
+Edificio     | Nombre: Casa Familiar        | Calefaccion: gas        | 150 m2 | Consumo: 18000 kWh/anio
+             Huella de carbono: 3672.00 kg CO2/anio
+
+Carro        | Modelo: Toyota Corolla       | Combustible: gasolina   | 7.5 L/100km | 15000 km/anio
+             Huella de carbono: 2598.75 kg CO2/anio
+
+Carro        | Modelo: Ford Ranger          | Combustible: diesel     | 10.2 L/100km | 20000 km/anio
+             Huella de carbono: 5467.20 kg CO2/anio
+
+Bicicleta    | Tipo: Montana              | Peso: 12.5 kg | Fabricacion: 150.0 kg CO2 | 5 anios de uso
+             Huella de carbono: 30.00 kg CO2/anio
+
+Bicicleta    | Tipo: Urbana               | Peso: 8.0 kg | Fabricacion: 90.0 kg CO2 | 8 anios de uso
+             Huella de carbono: 11.25 kg CO2/anio</pre>
+
+    <h3>Pruebas Unitarias</h3>
+
+    <p><strong>EdificioTest</strong></p>
+    <pre>PASS: testHuellaCarbono_electrica
+PASS: testHuellaCarbono_gas
+PASS: testHuellaCarbono_ignoraCase
+PASS: testEficienciaEnergetica
+
+Resultado: 4 PASS | 0 FAIL</pre>
+
+    <p><strong>CarroTest</strong></p>
+    <pre>PASS: testHuellaCarbono_gasolina
+PASS: testHuellaCarbono_diesel
+PASS: testHuellaCarbono_ignoraCase
+PASS: testEficienciaCombustible
+
+Resultado: 4 PASS | 0 FAIL</pre>
+
+    <p><strong>BicicletaTest</strong></p>
+    <pre>PASS: testHuellaCarbono
+PASS: testHuellaCarbono_otrosValores
+PASS: testGetKilometrosAnio
+
+Resultado: 3 PASS | 0 FAIL</pre>
+
+  </div>
+</body>
+
+</html>

@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import Clases.Edificio;
 import Clases.Carro;
 import Clases.Bicicleta;
@@ -15,13 +18,14 @@ public class HuellaCarbonoApp {
         HuellaCarbonoApp app = new HuellaCarbonoApp();
 
         app.listaHuella.add(new Edificio("Torre Empresarial", 85000, 1200, "electrica"));
-        app.listaHuella.add(new Edificio("Casa Familiar",     18000,  150, "gas"));
-        app.listaHuella.add(new Carro("Toyota Corolla", "gasolina", 7.5,  15000));
-        app.listaHuella.add(new Carro("Ford Ranger",    "diesel",   10.2, 20000));
+        app.listaHuella.add(new Edificio("Casa Familiar", 18000, 150, "gas"));
+        app.listaHuella.add(new Carro("Toyota Corolla", "gasolina", 7.5, 15000));
+        app.listaHuella.add(new Carro("Ford Ranger", "diesel", 10.2, 20000));
         app.listaHuella.add(new Bicicleta("Montana", 12.5, 150.0, 5));
-        app.listaHuella.add(new Bicicleta("Urbana",   8.0,  90.0, 8));
+        app.listaHuella.add(new Bicicleta("Urbana", 8.0, 90.0, 8));
 
         app.displayFootprints();
+        app.guardarReporte("reporte_huella_carbono.txt");
     }
 
     public void displayFootprints() {
@@ -31,6 +35,28 @@ public class HuellaCarbonoApp {
         for (HuellaCarbono item : listaHuella) {
             System.out.println(item);
             System.out.printf("             Huella de carbono: %.2f kg CO2/anio%n%n", item.getHuellaCarbono());
+        }
+    }
+
+    public void guardarReporte(String nombreArchivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            writer.write("============================================================");
+            writer.newLine();
+            writer.write("         REPORTE DE HUELLA DE CARBONO (kg CO2/anio)        ");
+            writer.newLine();
+            writer.write("============================================================");
+            writer.newLine();
+            for (HuellaCarbono item : listaHuella) {
+                writer.write(item.toString());
+                writer.newLine();
+                writer.write(
+                        String.format("             Huella de carbono: %.2f kg CO2/anio", item.getHuellaCarbono()));
+                writer.newLine();
+                writer.newLine();
+            }
+            System.out.println("Reporte guardado en: " + nombreArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al guardar el reporte: " + e.getMessage());
         }
     }
 }

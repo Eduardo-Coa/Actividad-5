@@ -1,0 +1,21 @@
+============================================================
+         REPORTE DE HUELLA DE CARBONO (kg CO2/anio)        
+============================================================
+Edificio     | Nombre: Torre Empresarial    | Calefaccion: electrica  | 1200 m2 | Consumo: 85000 kWh/anio
+             Huella de carbono: 19805.00 kg CO2/anio
+
+Edificio     | Nombre: Casa Familiar        | Calefaccion: gas        | 150 m2 | Consumo: 18000 kWh/anio
+             Huella de carbono: 3672.00 kg CO2/anio
+
+Carro        | Modelo: Toyota Corolla       | Combustible: gasolina   | 7.5 L/100km | 15000 km/anio
+             Huella de carbono: 2598.75 kg CO2/anio
+
+Carro        | Modelo: Ford Ranger          | Combustible: diesel     | 10.2 L/100km | 20000 km/anio
+             Huella de carbono: 5467.20 kg CO2/anio
+
+Bicicleta    | Tipo: Montana              | Peso: 12.5 kg | Fabricacion: 150.0 kg CO2 | 5 anios de uso
+             Huella de carbono: 30.00 kg CO2/anio
+
+Bicicleta    | Tipo: Urbana               | Peso: 8.0 kg | Fabricacion: 90.0 kg CO2 | 8 anios de uso
+             Huella de carbono: 11.25 kg CO2/anio
+
